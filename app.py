@@ -86,7 +86,8 @@ def wechat():
             )
             db.commit()
 
-            reply_text = '已收到，开电脑时处理。'
+            # 不再发送自动回复，由本地 merged_worker 在2秒内通过客服消息推送真实回复
+            return 'success'
             reply = f'''<xml>
 <ToUserName><![CDATA[{openid}]]></ToUserName>
 <FromUserName><![CDATA[{to_oa}]]></FromUserName>
